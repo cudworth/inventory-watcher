@@ -1,7 +1,6 @@
 #!/usr/bin/python3
-import os, json, webbrowser, requests, time, random
+import json, time, random
 from twilio.rest import Client
-from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -31,9 +30,7 @@ iterate = True
 while iterate == True:
 
     driver.refresh()
-    pause(20, 40)
-
-    #wait.until(presence_of_element_located((By.LINK, "random")))
+    pause(60, 90)
 
     try:
         #links = driver.find_elements_by_tag_name("a") #Reddit
