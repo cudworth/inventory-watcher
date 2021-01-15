@@ -25,6 +25,7 @@ def addToCart(driver, iter, elementID, notifierMessage):
     try:
         driver.find_element_by_id(elementID).click()
         sendTextNotification(notifierMessage)
+        print('add to cart btn clicked')
         iter = False
     except Exception as err:
         print('Error occured: ', err)
@@ -33,7 +34,9 @@ def addToCart(driver, iter, elementID, notifierMessage):
 def costcoLogin(driver):
     driver.find_element_by_id('logonId').send_keys(data['costcoEmail'])
     driver.find_element_by_id('logonPassword').send_keys(data['costcoPassword'])
-    driver.find_element_by_id('logonPassword').submit()
+    driver.find_element_by_id('option1').send_keys(' ')
+    driver.find_element_by_id('LogonForm').submit()
+    time.sleep(20)
 
 myDriver.get(loginPage)
 
@@ -44,6 +47,6 @@ myDriver.get(productPage)
 iter = True
 
 while iter:
-    randPause(15, 20)
+    randPause(20, 25)
     myDriver.refresh()
     iter = addToCart(myDriver, iter, "add-to-cart-btn", "Inventory @ Costco")
